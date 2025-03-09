@@ -1,4 +1,5 @@
 from django.db import models
+from multiselectfield import MultiSelectField
 
 # created on amrch72025Create your models here.
 class Anime(models.Model):
@@ -41,11 +42,15 @@ class Anime(models.Model):
    
    title = models.CharField(max_length=200)
 
-   genre = models.CharField(max_length=25,
+   genre = MultiSelectField(max_length=50,
                   choices=ANIME_GENRE)
    
    num_ep = models.IntegerField(default=12)
    completed = models.BooleanField(default="FALSE")
+
+
+   def __str__(self):
+      return self.title
 
    
 
