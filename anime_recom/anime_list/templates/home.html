@@ -1,9 +1,47 @@
-<h1>Hello<h1>
+<h1>Anime</h1>
 
+<h3>Add to list</h3>
+
+<form method='POST' action='/'>
+
+    {% csrf_token %}
+
+    {{AnimeForm.title}}<br>
+    {{AnimeForm.num_ep}}<br>
+    {{AnimeForm.genre}}<br>
+    {{AnimeForm.completed}} <br>
     
+
+    <input class="btn" type="submit" name="add anime">
+
+</form>
+
+
+
+<h3>Currently watching</h3>
+
 {% for anime in animes %}
-
-    <p>  {{anime}} <p> 
-      
-    
+    {% if anime.completed == False %}
+        <ul>
+            <li><p>  {{anime}} ( {{anime.num_ep}} episodes) <p>
+            </li>
+        </ul>
+    {% endif %}
 {% endfor %}
+
+<break>
+
+<h3>Already Watched</h3>
+
+{% for anime in animes %}
+    {% if anime.completed %}
+        <ul>
+            <li><p>  {{anime}} ( {{anime.num_ep}} episodes) <p>
+            </li>
+        </ul>
+    {% endif %}
+{% endfor %}
+
+<br>
+
+<p>Anime recommendation: <a href="/recommendation">Recommend me!</a></p>

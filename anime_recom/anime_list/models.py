@@ -40,13 +40,13 @@ class Anime(models.Model):
     ("KIDS", "Kids"),
     )
    
-   title = models.CharField(max_length=200)
+   title = models.CharField(max_length=1000)
 
-   genre = MultiSelectField(max_length=50,
+   genre = MultiSelectField(max_length=200,
                   choices=ANIME_GENRE)
    
    num_ep = models.IntegerField(default=12)
-   completed = models.BooleanField(default="FALSE")
+   completed = models.BooleanField()
 
 
    def __str__(self):
