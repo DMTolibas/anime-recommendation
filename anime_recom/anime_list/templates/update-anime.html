@@ -1,0 +1,15 @@
+<h1>Update Anime</h1>
+
+<p> Do you want to update this anime? - <b> {{anime}} </b> </p>
+
+<form method="POST" action=""> 
+
+    {% csrf_token %}
+
+    {{AnimeForm}}
+
+    <input type="Submit" name="Update Anime">
+
+</form>
+
+<a href="{% url 'home' %}"> Cancel </a>

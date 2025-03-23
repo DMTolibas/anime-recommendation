@@ -6,10 +6,10 @@
 
     {% csrf_token %}
 
-    {{AnimeForm.title}}<br>
-    {{AnimeForm.num_ep}}<br>
+    {{AnimeForm.title}}<br> <br>
+    Number of Episodes: {{AnimeForm.num_ep}}<br>
     {{AnimeForm.genre}}<br>
-    {{AnimeForm.completed}} <br>
+    Is it completed? {{AnimeForm.completed}} <br><br>
     
 
     <input class="btn" type="submit" name="add anime">
@@ -24,6 +24,8 @@
     {% if anime.completed == False %}
         <ul>
             <li><p>  {{anime}} ( {{anime.num_ep}} episodes) <p>
+                <a href="{% url 'delete-anime' anime.id %}"> Delete</a>
+                <a href="{% url 'update-anime' anime.id %}"> Update</a>
             </li>
         </ul>
     {% endif %}
@@ -37,6 +39,8 @@
     {% if anime.completed %}
         <ul>
             <li><p>  {{anime}} ( {{anime.num_ep}} episodes) <p>
+                <a href="{% url 'delete-anime' anime.id %}"> Delete</a>
+                <a href="{% url 'update-anime' anime.id %}"> Update</a>
             </li>
         </ul>
     {% endif %}
