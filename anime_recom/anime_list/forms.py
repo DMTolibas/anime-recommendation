@@ -11,3 +11,12 @@ class AnimeForm(forms.ModelForm):
     class Meta:
         model = Anime
         fields = "__all__"
+
+
+class RecomForm(forms.ModelForm):
+
+    title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Anime similar to...'}))
+
+    class Meta:
+        model = Anime
+        fields = "__all__"

@@ -1,1 +1,16 @@
 <h1>Recommendation System</h1>
+
+<a href="{% url 'home' %}"> Home </a>
+
+<br>
+<h4>Recommend Anime Similar to...</h4>
+<form method='POST' action='/'>
+
+    {% csrf_token %}
+
+    {{RecomForm.title}}<br>
+    
+    <br>
+    <input class="btn" type="submit" name="Recommendation anime">
+
+</form>
