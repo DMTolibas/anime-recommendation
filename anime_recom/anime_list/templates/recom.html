@@ -4,13 +4,21 @@
 
 <br>
 <h4>Recommend Anime Similar to...</h4>
-<form method='POST' action='/'>
+
+<form method='POST' action=''>
 
     {% csrf_token %}
 
-    {{RecomForm.title}}<br>
-    
+    {{ RecomForm.name.label_tag }}<br>
+    {{ RecomForm.name }}<br>
+    {{ RecomForm.name.errors }}<br>  {% comment %} user see the error {% endcomment %}
+
     <br>
-    <input class="btn" type="submit" name="Recommendation anime">
+    <button class="btn" type="submit"> Recommendation anime </button>
 
 </form>
+
+
+<h4>Suggested Anime based on your input</h4>
+
+{{anime_info|safe}}

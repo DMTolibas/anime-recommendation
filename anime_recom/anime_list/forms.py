@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 
 
-from .models import Anime
+from .models import Anime, AnimeImport
 
 class AnimeForm(forms.ModelForm):
 
@@ -13,10 +13,16 @@ class AnimeForm(forms.ModelForm):
         fields = "__all__"
 
 
-class RecomForm(forms.ModelForm):
+#searching on database
+class RecomForm(forms.Form):
+    name = forms.CharField(
+        label= 'name',
+        max_length=500,
+        widget=forms.TextInput(attrs={'placeholder': 'Anime similar to...'}))
 
-    title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Anime similar to...'}))
+'''
+Searching/filtering data	---- forms.Form
+Creating/editing database row ---- forms.ModelForm
 
-    class Meta:
-        model = Anime
-        fields = "__all__"
+In RecomForm class we did not use model = AnimeImport because we do not need to save data to AnimeImport database but we just need to search through it.
+'''
